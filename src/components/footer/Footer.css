@@ -1,0 +1,168 @@
+.footer {
+  position: relative;
+}
+.footer_wrap {
+  display: flex;
+  margin: 0 auto;
+  padding: 56px 18px;
+  max-width: 1024px;
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.footer_top {
+  width: 100%;
+  display: flex;
+
+  justify-content: space-between;
+}
+.footer_top_left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 20px;
+}
+.fl_top {
+  color: #1c1c1c;
+  font-size: 17px;
+  font-weight: 600;
+}
+.fl_bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+.flb_top {
+  color: #444;
+  font-size: 24px;
+  font-weight: 700;
+}
+.flb_bottom {
+  display: flex;
+  flex-direction: column;
+  color: #aaa;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.flbb_t {
+}
+.flbb_t span {
+}
+.flbb_b {
+}
+.footer_top_right {
+  display: flex;
+  gap: 20px;
+  width: 50%;
+  box-sizing: border-box;
+}
+.ftr_left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 50%;
+  box-sizing: border-box;
+}
+.ftrl_top {
+  color: #1c1c1c;
+  font-size: 17px;
+  font-weight: 600;
+}
+.ftrl_bottom {
+}
+.ftrl_bottom ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.ftrl_bottom ul li {
+}
+.ftrl_bottom ul li a {
+  color: #777;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.ftr_right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 50%;
+  box-sizing: border-box;
+}
+.ftrr_top {
+  color: #1c1c1c;
+  font-size: 17px;
+  font-weight: 600;
+}
+.ftrr_bottom {
+}
+.ftrr_bottom ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.ftrr_bottom ul li {
+}
+.ftrr_bottom ul li a {
+  color: #777;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.footer_middle {
+  border: 1px solid #eee;
+  margin: 40px 0;
+}
+.footer_bottom {
+  display: flex;
+  justify-content: space-between;
+}
+.fb_left {
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}
+.fbl_top {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.fbl_top a {
+  font-size: 14px;
+  color: #777;
+}
+.fbl_top p {
+}
+.fbl_bottom {
+  display: flex;
+  gap: 24px;
+}
+.fbl_bottom a {
+  font-size: 14px;
+  color: #777;
+}
+.fb_right {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.fb_right a {
+  height: 24px;
+  width: 24px;
+}
+.fb_right a img {
+  width: 24px;
+  height: 24px;
+}
+.bar {
+  display: inline-block;
+  width: 1px;
+  height: 11px;
+  background-color: #aaaaaa;
+  margin: 0 6px;
+}

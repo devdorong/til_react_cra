@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마인드 다이어리</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: '#6366f1',
+        secondary: '#9333ea',
+        darkBg: '#1e293b',
+        darkSurface: '#334155',
+        darkText: '#f1f5f9'
+      },
+      borderRadius: {
+        'none': '0px',
+        'sm': '4px',
+        DEFAULT: '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '20px',
+        '2xl': '24px',
+        '3xl': '32px',
+        'full': '9999px',
+        'button': '8px'
+      }
+    }
+  }
+}
+</script>
+<style>
+.emotion-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  cursor: pointer;
+}
+.emotion-slider::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, #fecaca, #bfdbfe, #bbf7d0);
+  border-radius: 9999px;
+}
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-gray-900 dark:text-darkText">
+<!-- 기존 콘텐츠 유지 -->
+
+<!-- 다크모드 토글 버튼 -->
+<div class="fixed bottom-4 right-4 z-50">
+  <button onclick="document.documentElement.classList.toggle('dark')" class="bg-primary text-white px-4 py-2 rounded-full shadow-lg hover:bg-primary/80">
+    다크모드 토글
+  </button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const chartDom = document.getElementById('emotionChart');
+  if (!chartDom) return;
+  const myChart = echarts.init(chartDom);
+  myChart.setOption({
+    xAxis: { type: 'category', data: ['6/1','6/2','6/3','6/4','6/5','6/6','6/7'] },
+    yAxis: { type: 'value' },
+    series: [{ data: [85,75,40,60,90,80,95], type: 'line' }]
+  });
+});
+</script>
+</body>
+</html>
