@@ -1,9 +1,9 @@
 import React from "react";
 //css
-import "../css/Main.css";
+import "../main/Main.css";
 
 // components
-import Banner from "./Banner";
+import Banner from "../banner/Banner";
 import BannerUnder from "./BannerUnder";
 import Cock from "./Cock";
 import Recently from "./Recently";

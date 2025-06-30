@@ -1,14 +1,14 @@
 import React from "react";
 
 // css
-import "../css/Popup.css";
+// import "../css/Popup.css";
 
 //js
-import "../js/Popup.js";
+// import "../js/Popup.js";
 
 // components
 import Header from "../components/header/Header.jsx";
-import Main from "../components/Main";
+import Main from "../components/main/Main.jsx";
 import Footer from "../components/footer/Footer.jsx";
 import Popup from "../components/popup/Popup.jsx";
 
