@@ -22,6 +22,7 @@
 ```bash
 npx create-react-app@latest 프로젝트명
 
+
 npx create-react-app@latest .
 
 git remote add origin 주소
@@ -35,7 +36,7 @@ git remote add origin 주소
 
 - node_modules 에 다운로드 받아서 파일을 관리하는 용도.
 - 전체 프로젝트에서 활용한 npm 목록을 관리한다.
-- 절대 삭제, 수정은 손으로 하지 않는다.
+- `절대 삭제, 수정은 손으로 하지 않는다.`
 - node_modules 폴더 다운 명령
 
 ```bash
@@ -304,4 +305,6 @@ export default App;
 ```
 
 ### 5.5. VSCode 프로젝트 셋팅
+
 - `.vscode` 폴더 만들기
+- `.vscode/settings.json` 파일 만들기
