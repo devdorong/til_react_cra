@@ -1,6 +1,24 @@
-.wrap {
-  display: flex;
+// 변수만들기
+@import "val";
+@import "color";
+@import "mixins";
+
+.warp {
+  position: relative;
+  @include flex-center-center;
   .notice {
-    display: flex;
+     @include flex-center-center;
+     @include border-line(5px,#ff0000);
+    width: $width-800;
+    height: $height-400;
+    a {
+      display: block;
+      &:hover {
+        background-color: red;
+      }
+      span {
+        display: block;
+      }
+    }
   }
 }

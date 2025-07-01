@@ -1,0 +1,9 @@
+@mixin flex-center-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin border-line($num, $cc) {
+  border: $num solid $cc;
+}
