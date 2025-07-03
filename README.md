@@ -214,7 +214,7 @@ export default StartPage;
 - css 가 아니라 module.css 를 불러들임.
 
 ```jsx
-// import from "../css/StartPage.css"
+// import "../css/StartPage.css"
 import styles from "../css/StartPage.module.css";
 ```
 
@@ -587,3 +587,19 @@ function Header() {
 }
 export default Header;
 ```
+
+# CSS-in-JS
+
+- Styled Component
+- Emotion
+
+## 1. 환경설정
+
+```bash
+npm i @emotion/react @emotion/styled
+```
+
+## 2. 왜 필요한가?
+
+- 태그 처럼 생겼다. (내가 만든 태그)
+- 태그가 내용을 설명하도록 구성한다.
