@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Test() {
-  // js
-  const handleFocus = () => {
-    console.log("포커스 되었네요.");
+  //js
+  const [todoList, setTodoList] = useState([]);
+  const handleClick = () => {
+    const temp = "할일이지요";
+    setTodoList([...todoList, temp]);
   };
-  const handleBlur = () => {
-    console.log("포커스 해제 되었네요.");
-  };
-  // jsx
+  //jsx
   return (
     <div>
-      <input type="text" onFocus={handleFocus} onBlur={handleBlur} />
+      <input type="text" />
+      <button onClick={handleClick}>목록추가</button>
+      <ul>
+        {todoList.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </div>
   );
 }
