@@ -1,11 +1,13 @@
 export const BgObj = {
-  backgroundColor: "yellowgreen",
+  backgroundColor: "green",
   color: "#fff",
   border: "5px solid hotpink",
 };
-const BgObjred = {
+
+const BgObjRed = {
   backgroundColor: "red",
   color: "#fff",
   border: "5px solid hotpink",
 };
-export default BgObjred;
+
+export default BgObjRed;

@@ -1,23 +1,23 @@
-.warp {
+.wrap {
   position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
-.warp .notice {
+.wrap .notice {
   display: flex;
-  align-items: center;
   justify-content: center;
-  border: 5px solid #ff0000;
+  align-items: center;
+  border: 50px solide #ff0000;
   width: 800px;
   height: 400px;
 }
-.warp .notice a {
+.wrap .notice a {
   display: block;
 }
-.warp .notice a:hover {
+.wrap .notice a:hover {
   background-color: red;
 }
-.warp .notice a span {
+.wrap .notice a span {
   display: block;
 }/*# sourceMappingURL=test.css.map */

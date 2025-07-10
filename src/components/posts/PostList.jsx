@@ -1,15 +1,17 @@
 import styled from "@emotion/styled";
 import React from "react";
 
-function PostList({ id, title, body, userId }) {
-  // js
+function PostList({ id, title, body, userid }) {
+  // js 자리
   const PostCard = styled.div`
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
     border: 6px solid #ffb703;
-    margin-bottom: 20px;
+    margin: 20px;
     padding: 20px;
+    cursor: pointer;
+
     transition: all 0.2s;
     &:hover {
       transform: translateY(-10px);
@@ -31,20 +33,14 @@ function PostList({ id, title, body, userId }) {
     text-align: right;
     color: #999;
   `;
-  // jsx
+  // jsx 자리
   return (
     <PostCard>
-      <PostUser>
-        <b>User</b> :{userId}
-      </PostUser>
-      <b>Id</b> : {id}
       <PostTitle>
-        <b>title</b> : {title}
+        {id}.{title}
       </PostTitle>
-      <PostBody>
-        <b>body</b> : {body}
-      </PostBody>
-      <br />
+      <PostBody>{body}</PostBody>
+      <PostUser>User: {userid}</PostUser>
     </PostCard>
   );
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-
 function Button({
   children,
   variant = "default",
@@ -38,7 +37,6 @@ function Button({
       opacity: ${props => (props.disabled ? 0.6 : 0.8)};
     }
   `;
-
   // jsx 자리
   return (
     <Button variant={variant} size={size} disabled={disabled}>

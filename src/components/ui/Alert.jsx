@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 
-function Alert({ children = "기본입니다.", type = "default" }) {
+function Alert({ children, type = "default" }) {
   // js 자리
   const StyledAlert = styled.div`
     background-color: ${props => {
@@ -18,6 +18,7 @@ function Alert({ children = "기본입니다.", type = "default" }) {
           return "#e2e3e5";
       }
     }};
+
     color: ${props => {
       switch (props.type) {
         case "success":
@@ -37,6 +38,7 @@ function Alert({ children = "기본입니다.", type = "default" }) {
     margin: 10px 0;
     border: 1px solid transparent;
   `;
+
   // jsx 자리
   return <StyledAlert type={type}>{children}</StyledAlert>;
 }

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 
-function Chip({ label = "label" }) {
+function Chip({ label = "Label" }) {
   // js 자리
   const StyledChip = styled.div`
     display: inline-flex;
@@ -16,7 +16,7 @@ function Chip({ label = "label" }) {
       margin-right: 8px;
     }
     button {
-      background-color: #e0e0e0;
+      background: none;
       border: none;
       cursor: pointer;
       font-weight: bold;
@@ -27,7 +27,7 @@ function Chip({ label = "label" }) {
   return (
     <StyledChip>
       <span>{label}</span>
-      <button>X</button>
+      <button>x</button>
     </StyledChip>
   );
 }

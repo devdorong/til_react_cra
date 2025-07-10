@@ -6,11 +6,13 @@ function Tooltip({ children, text }) {
   const TooltipWrap = styled.div`
     position: relative;
     display: inline-block;
-    &:hover > .bubble {
+
+    &:hover .bubble {
       visibility: visible;
       opacity: 1;
     }
   `;
+
   const TooltipBubble = styled.div`
     position: absolute;
     left: 50%;
@@ -21,6 +23,7 @@ function Tooltip({ children, text }) {
     color: #fff;
     border-radius: 6px;
     padding: 6px 10px;
+    font-size: 12px;
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;

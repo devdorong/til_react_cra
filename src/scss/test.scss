@@ -1,20 +1,21 @@
-// 변수만들기
+// 변수 사용하기
 @import "val";
 @import "color";
+// 함수 사용하기
 @import "mixins";
 
-.warp {
+.wrap {
   position: relative;
   @include flex-center-center;
   .notice {
-     @include flex-center-center;
-     @include border-line(5px,#ff0000);
+    @include flex-center-center;
+    @include border-line(50px, #ff0000);
     width: $width-800;
     height: $height-400;
     a {
       display: block;
       &:hover {
-        background-color: red;
+        background-color: $red;
       }
       span {
         display: block;

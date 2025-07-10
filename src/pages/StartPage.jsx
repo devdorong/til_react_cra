@@ -12,7 +12,7 @@ import Slide from "../components/Slide";
 function StartPage() {
   return (
     <div className={styles.wrap}>
-      {/* <div className="box">로고</div> */}
+      {/* <div className={styles.box}>로고</div> */}
       {/* 헤더 컴포넌트 */}
       <Header></Header>
       {/* 슬라이드 컴포넌트 */}

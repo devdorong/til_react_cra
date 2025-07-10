@@ -1,15 +1,17 @@
 import styled from "@emotion/styled";
 import React from "react";
 
-function AlbumList({ id, title, userId }) {
-  //js
+function AlbumList({ userid, id, title }) {
+  // js 자리
   const AlbumCard = styled.div`
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
-    border: 6px solid #adfd88;
-    margin-bottom: 20px;
+    border: 6px solid #ffb703;
+    margin: 20px;
     padding: 20px;
+    cursor: pointer;
+
     transition: all 0.2s;
     &:hover {
       transform: translateY(-10px);
@@ -25,12 +27,13 @@ function AlbumList({ id, title, userId }) {
     text-align: right;
     color: #999;
   `;
-  //jsx
+  // jsx 자리
   return (
     <AlbumCard>
-      <AlbumUser>User : {userId}</AlbumUser>
-      ID : {id}
-      <AlbumTitle>{title}</AlbumTitle>
+      <AlbumTitle>
+        {id}.{title}
+      </AlbumTitle>
+      <AlbumUser>User: {userid}</AlbumUser>
     </AlbumCard>
   );
 }

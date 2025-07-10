@@ -13,8 +13,8 @@ function ProgressBar({ percent = 0, color = "#000" }) {
   `;
   const BarInner = styled.div`
     height: 100%;
-    background-color: ${({ color }) => color};
-    width: ${({ percent }) => percent}%;
+    background-color: ${props => props.color};
+    width: ${props => props.percent}%;
     transition: all 0.5s;
   `;
   // jsx 자리
