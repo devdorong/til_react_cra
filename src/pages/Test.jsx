@@ -3,51 +3,43 @@ import LoginForm from "../components/form/LoginForm";
 
 function Test() {
   // js 자리
-
-  // 변수 관리
-  const [userId, setUserId] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  // 모든 데이터가 모여지는 변수다
   const [formData, setFormData] = useState({
-    id: "",
-    email: "",
-    pw: "",
+    user_id: "",
+    user_email: "",
+    user_pw: "",
   });
 
-  // 이벤트 처리함수
-  const handleUserId = e => {
-    setUserId(e.target.value);
-  };
-  const handleUserEmail = e => {
-    setUserEmail(e.target.value);
-  };
-  const handleUserPassword = e => {
-    setUserPassword(e.target.value);
+  const handleChange = e => {
+    const { name, value } = e.target;
+    console.log(name, value);
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = e => {
     // 웹브라우저 새로 고침 방지
     e.preventDefault();
-    if (userId === "") {
+    if (formData.user_id === "") {
       setErrorMessage("아이디를 입력하세요.");
       return;
     }
-    if (userEmail === "") {
+    if (formData.user_email === "") {
       setErrorMessage("이메일을 입력하세요.");
       return;
     }
-    if (userPassword === "") {
+    if (formData.user_pw === "") {
       setErrorMessage("비밀번호를 입력하세요.");
       return;
     }
     console.log("백엔드로 데이터 보내요~");
-    console.log(`${userId} ${userEmail} ${userPassword}`);
     // 쿼리 스트링으로 보내기
-    console.log(`/login/?id=${userId}&email=${userEmail}&pw=${userPassword}`);
+    console.log(
+      `/login/?id=${formData.user_id}&email=${formData.user_email}&pw=${formData.user_pw}`,
+    );
 
     // 객체로 보내기
-    setFormData({ id: userId, email: userEmail, pw: userPassword });
+    const data = { ...formData };
     setErrorMessage("");
   };
 
@@ -56,20 +48,11 @@ function Test() {
     <div>
       <h1>회원로그인</h1>
       <LoginForm
-        userId={userId}
-        setUserId={setUserId}
-        userEmail={userEmail}
-        setUserEmail={setUserEmail}
-        userPassword={userPassword}
-        setUserPassword={setUserPassword}
         formData={formData}
-        setFormData={setFormData}
         errorMessage={errorMessage}
-        handleUserId={handleUserId}
-        handleUserEmail={handleUserEmail}
-        handleUserPassword={handleUserPassword}
+        handleChange={handleChange}
         handleSubmit={handleSubmit}
-      ></LoginForm>
+      />
     </div>
   );
 }
