@@ -1,24 +1,25 @@
 import React from "react";
-import BgObjRed, { BgObj } from "./bg";
+import { Link } from "react-router-dom";
 
-function Header() {
-  // js 코딩자리
-  const title = "웹 서비스 제목";
-  const version = 0.5;
-  function say() {
-    return "하하하";
-  }
-
-  const isLogin = true;
-
-  // html jsx 코드 자리
+function Header({ children, company, service, setIsLogin }) {
   return (
-    <div>
-      <div style={isLogin ? BgObj : BgObjRed}>{title}</div>
-      <div>
-        버전:{version} {say()}
-      </div>
-    </div>
+    <header>
+      <div onClick={() => setIsLogin(true)}>로그인하기</div>
+      <div onClick={() => setIsLogin(false)}>로그아웃하기</div>
+      회사 이름 : {company}
+      서비스 이름 : {service}
+      {children}
+      <Link to="/">😊로고</Link>
+      <Link to="/about">❤소개</Link>
+      <Link to="/about/mission">👏소개/미션</Link>
+      <Link to="/about/team">👀소개/팀</Link>
+      <Link to="/service">👌서비스</Link>
+      <Link to="/blog">💕블로그</Link>
+      <Link to="/blog/design/100">🤷‍♀️블로그 100번글</Link>
+      <Link to="/blog/design/detail?id=200&user=아이유">
+        🤷‍♂️블로그 100번글 상세내용
+      </Link>
+    </header>
   );
 }
 
