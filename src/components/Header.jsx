@@ -1,9 +1,13 @@
+import styled from "@emotion/styled";
 import React from "react";
 import { Link } from "react-router-dom";
+const Header1 = styled.header`
+  background-color: yellow;
+`;
 
 function Header({ children, company, service, setIsLogin }) {
   return (
-    <header>
+    <Header1>
       <div onClick={() => setIsLogin(true)}>로그인하기</div>
       <div onClick={() => setIsLogin(false)}>로그아웃하기</div>
       회사 이름 : {company}
@@ -19,7 +23,7 @@ function Header({ children, company, service, setIsLogin }) {
       <Link to="/blog/design/detail?id=200&user=아이유">
         🤷‍♂️블로그 100번글 상세내용
       </Link>
-    </header>
+    </Header1>
   );
 }
 

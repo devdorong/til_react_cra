@@ -1,0 +1,54 @@
+import React from "react";
+import {
+  Button,
+  ButtonDiv,
+  Container,
+  Section,
+  SubTitle,
+  Title,
+  TodoButtonWrap,
+  TodoContent,
+  TodoItem,
+  TodoListMessage,
+} from "./Todo.style";
+import { Link } from "react-router-dom";
+
+function Todo({ todoList, handleDelete }) {
+  return (
+    <Container>
+      <TodoButtonWrap>
+        <Button>
+          <Link to={"/add"} style={{ color: "#fff" }}>
+            등록하기
+          </Link>
+        </Button>
+      </TodoButtonWrap>
+      <Title>할일 웹 서비스</Title>
+      <SubTitle>할일 목록</SubTitle>
+      <Section>
+        {todoList.length === 0 ? (
+          <TodoListMessage>등록된 할일이 없습니다.</TodoListMessage>
+        ) : (
+          todoList.map(item => (
+            <TodoItem key={item.id}>
+              <TodoContent>
+                {item.id + 1}번째 할일:
+                <Link to={`/detail/${item.id}`}>{item.title}</Link>
+              </TodoContent>
+              <TodoButtonWrap>
+                <Button>
+                  <Link to={`/edit?id=${item.id}`} style={{ color: "#fff" }}>
+                    수정
+                  </Link>
+                </Button>
+                <Button onClick={() => handleDelete(item.id)}>삭제</Button>
+              </TodoButtonWrap>
+            </TodoItem>
+          ))
+        )}
+      </Section>
+    </Container>
+  );
+}
+
+export default Todo;
