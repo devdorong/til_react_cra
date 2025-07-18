@@ -1,27 +1,63 @@
-# useRef
+# useMemo
 
-- `html 태그를 보관해 두기(document.querySelector 처럼)`
-- 화면에 보여주지 않는 변수를 보관하기
-- 리랜더링 해도 값을 초기화 하지 않습니다
+## 1. 최적화 참고사항 (최적화 해보셨나요?)
 
-## DOM 요소 참조하기
+### 1.1. 레이아웃
 
-- focus 주기
+- Shift Layout 현상을 가능하면 제거
+- css 로 꾸준히 작업. npm 으로 가짜배치
+- skeleton 레이아웃
+- 반응형 코드 꾸준히 작업.
+
+### 1.2. 리액트 성능 최적화
+
+- lazy, suspense 로 로딩처리
+- useMemo, useCallBack, React.memo() 로 판별
+
+### 1.3. SEO 최적화
+
+- meta 태그
+- favicon
+- title
+- mobile icon 등등
+- GA4 적용
+
+## 2. useMemo
+
+- 개발 중에는 적용하지 않습니다.
+- 최적화 고민하면서 개발하면 시간이 오래 걸립니다.
+- 개발 중에 틈틈이 최적화 하시길 권장드립니다.
+
+### 2.1. useMemo : 리액트 변수 저장하기
+
+- 성능 이슈 발생 가능함.
+  - 문제점
+    - `count` 값 변경시
+    - 다시 계산할 필요없는 `num * 2` 가 실행됨
+  - 원하는 것
+    - `num` 값 변할 때만
+    - 다시 계산할 필요 `num * 2` 가 실행됨
 
 ```jsx
-import React, { useRef } from "react";
+import React, { useState } from "react";
 
 function App() {
-  // 태그를 참조해서 보관하고 싶다.
-  const inputRef = useRef(null);
-  const handleClick = () => {
-    inputRef.current.focus();
-  };
+  // js
+  console.log("APP: 리랜더링");
+  const [count, setCount] = useState(0);
+  const [num, setNum] = useState(1);
+
+  // 값을 2배로
+  const now = num * 2;
+  console.log("now: ", now);
+  // jsx
   return (
     <div>
-      <h1>포커스로 이동하기</h1>
-      <input ref={inputRef} type="text" placeholder="아이디를 입력하세요." />
-      <button onClick={handleClick}>입력창 이동</button>
+      <h2>count 값 : {count}</h2>
+      <h2>num 값 : {num}</h2>
+      <h2>now 값 : {now}</h2>
+      <button onClick={() => setCount(count + 1)}>count 증가</button>
+      <button onClick={() => setNum(num + 1)}>num 증가</button>
     </div>
   );
 }
@@ -29,44 +65,31 @@ function App() {
 export default App;
 ```
 
-- 스크롤 하기
+- 해결 코드
 
 ```jsx
-import React, { useRef } from "react";
-import { Button } from "./pages/todo/Todo.style";
+import React, { useMemo, useState } from "react";
 
 function App() {
-  // DOM 보관해 두는 리액트 변수
-  const companyRef = useRef(null);
-  const topRef = useRef(null);
-  const handleClickCompany = () => {
-    companyRef.current.scrollIntoView({ behavior: "smooth" });
-  };
-  const handleClickTop = () => {
-    topRef.current.scrollIntoView({ behavior: "smooth" });
-  };
+  // js
+  console.log("APP: 리랜더링");
+  const [count, setCount] = useState(0);
+  const [num, setNum] = useState(1);
+
+  // 값을 2배로
+  const now = useMemo(() => {
+    console.log("now: ", num * 2);
+    return num * 2;
+  }, [num]);
+
+  // jsx
   return (
-    <div ref={topRef}>
-      <h1>스크롤 해보기</h1>
-      <Button
-        onClick={handleClickCompany}
-        style={{ whiteSpace: "nowrap", overflow: "cover", padding: "5px 0px" }}
-      >
-        회사소개로 이동하기
-      </Button>
-      <div style={{ height: "100vh", backgroundColor: "hotpink" }}>인사말</div>
-      <div
-        ref={companyRef}
-        style={{ height: "100vh", backgroundColor: "greenyellow" }}
-      >
-        회사소개
-      </div>
-      <Button
-        onClick={handleClickTop}
-        style={{ position: "fixed", right: 30, bottom: 30 }}
-      >
-        위로가기
-      </Button>
+    <div>
+      <h2>count 값 : {count}</h2>
+      <h2>num 값 : {num}</h2>
+      <h2>now 값 : {now}</h2>
+      <button onClick={() => setCount(count + 1)}>count 증가</button>
+      <button onClick={() => setNum(num + 1)}>num 증가</button>
     </div>
   );
 }
@@ -74,75 +97,45 @@ function App() {
 export default App;
 ```
 
-- form 태그 input 요소 초기화 하기
+- 예제
 
 ```jsx
-import React, { useRef } from "react";
+import React, { useMemo, useState } from "react";
 
 function App() {
-  const inputRef = useRef(null);
-  const handleClick = () => {
-    inputRef.current.value = "";
-  };
+  // js 자리
+  const [num, setNum] = useState(0);
+  const [text, setText] = useState("");
+
+  const refultFN = useMemo(() => {
+    return num * num;
+  }, [num]);
+
+  const helloFn = useMemo(() => {
+    return text + " 안녕!";
+  }, [text]);
+
+  // jsx 자리
   return (
     <div>
-      <input ref={inputRef} type="text" placeholder="값을 입력하세요" />
-      <button onClick={handleClick}>값 비우기</button>
-    </div>
-  );
-}
-
-export default App;
-```
-
-- 비디오 제어하기(여기선 유튜브 링크만 가져옴)
-
-```jsx
-import React, { useRef } from "react";
-
-function App() {
-  const videoRef = useRef(null);
-  const prevV = () => {
-    videoRef.current.currentTime -= 10;
-    videoRef.current.play();
-  };
-  const playV = () => {
-    videoRef.current.currentTime = 0;
-    videoRef.current.play();
-  };
-  const stopV = () => {
-    videoRef.current.currentTime = 0;
-    videoRef.current.pause();
-  };
-  const nextV = () => {
-    videoRef.current.currentTime += 10;
-    videoRef.current.play();
-  };
-  return (
-    <div>
-      <h1>video 제어</h1>
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/1t67XscXapI?si=p4HwBWSODsF5qP96"
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe>
-      <video
-        ref={videoRef}
-        src="https://youtu.be/rxzCZZPBjX0"
-        muted
-        autoPlay
-        controls
-      ></video>
+      <h1>간단한 계산 출력</h1>
       <div>
-        <button onClick={prevV}>10초전</button>
-        <button onClick={playV}>play</button>
-        <button onClick={stopV}>stop</button>
-        <button onClick={nextV}>10초후</button>
+        <input
+          type="number"
+          placeholder="숫자입력"
+          value={num}
+          onChange={e => setNum(parseInt(e.target.value))}
+        />
+        <div>{refultFN}</div>
+        <h1>글자 최적화</h1>
+        <div>
+          <input
+            type="text"
+            value={text}
+            onChange={e => setText(e.target.value)}
+          />
+        </div>
+        <div>{helloFn}</div>
       </div>
     </div>
   );
@@ -151,23 +144,63 @@ function App() {
 export default App;
 ```
 
-## 변수 활용하기
+# useCallback
 
-- 값을 보관하고 리랜더링이 되어도 유지하기.
+- 왜 함수를 랜더링 마다 자꾸 새로 만들죠?
+
+- 성능 이슈 발생 가능함.
+  - 문제점
+    - `count` 값 변경시
+    - 다시 만들 필요없는 `const add = () {...}` 가 만들어짐
+  - 원하는 것
+    - `const add = () {...}` 한번 만들고 다시는 새로 만들지 마라.
 
 ```jsx
-import React, { useRef } from "react";
+import React, { useState } from "react";
+// window
 
 function App() {
-  const countRef = useRef(0);
-  const incre = () => {
-    countRef.current++;
-    console.log(countRef.current);
+  console.log("APP : 리랜더링");
+  // js
+  const [count, setCount] = useState(0);
+
+  // 과연 add 함수는 다시 정의가 될까?
+  const add = () => {
+    setCount(count + 1);
   };
+  // jsx
   return (
     <div>
-      <h1>값 보관 및 저장 {countRef.current}</h1>
-      <button onClick={incre}>증가</button>
+      <h2>Count : {count}</h2>
+      <button onClick={add}>함수 실행</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+- 성능 개선 코드
+
+```jsx
+import React, { useCallback, useState } from "react";
+// window
+
+function App() {
+  console.log("APP : 리랜더링");
+  // js
+  const [count, setCount] = useState(0);
+
+  // 과연 add 함수는 다시 정의가 될까?
+  const add = useCallback(() => {
+    setCount(count + 1);
+  }, [count]);
+
+  // jsx
+  return (
+    <div>
+      <h2>Count : {count}</h2>
+      <button onClick={add}>함수 실행</button>
     </div>
   );
 }
