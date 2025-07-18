@@ -20,7 +20,7 @@ function LoadingDiv() {
   //jsx
   return (
     <Loading>
-      <ClimbingBoxLoader color="#9cfffc" size={100} speedMultiplier={1000} />
+      <ClimbingBoxLoader color="#9cfffc" size={100} speedMultiplier={3} />
     </Loading>
   );
 }

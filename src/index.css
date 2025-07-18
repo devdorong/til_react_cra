@@ -1,12 +1,40 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 /* 글꼴 설정*/
 @font-face {
-  font-family: "ddag";
-  src: url("./assets/ddag.ttf");
+  font-family: "Black";
+  src: url("./assets/Pretendard-Black.otf");
 }
 @font-face {
-  font-family: "chab";
-  src: url("./assets/chab.ttf");
+  font-family: "Bold";
+  src: url("./assets/Pretendard-Bold.otf");
+}
+@font-face {
+  font-family: "ExtraBold";
+  src: url("./assets/Pretendard-ExtraBold.otf");
+}
+@font-face {
+  font-family: "ExtraLight";
+  src: url("./assets/Pretendard-ExtraLight.otf");
+}
+@font-face {
+  font-family: "Light";
+  src: url("./assets/Pretendard-Light.otf");
+}
+@font-face {
+  font-family: "Medium";
+  src: url("./assets/Pretendard-Medium.otf");
+}
+@font-face {
+  font-family: "Regular";
+  src: url("./assets/Pretendard-Regular.otf");
+}
+@font-face {
+  font-family: "SemiBold";
+  src: url("./assets/Pretendard-SemiBold.otf");
+}
+@font-face {
+  font-family: "Thin";
+  src: url("./assets/Pretendard-Thin.otf");
 }
 
 * {
@@ -26,7 +54,9 @@ ol {
 html {
 }
 body {
-  font-family: "chab", "ddag";
+  font-family:
+    "Regular", "Black", "Bold", "ExtraBold", "ExtraLight", "Light", "Medium",
+    "SemiBold", "Thin";
 }
 
 .box {
