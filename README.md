@@ -2369,3 +2369,100 @@ function App() {
 
 export default App;
 ```
+
+## 4. 종합예제
+
+- 리액트에는 리액트 전용 변수, 즉 state 가 2종류가 있다.
+- 1. 컴포넌트에서만 생성 및 관리되는 usestate 가 있음.
+- 2. 리액트 전체 영역에서 생성 및 관리되는 Context 가 있음.
+- 공통적으로 state 가 바뀌면 리랜더링이 일어난다.
+
+### 4.1. context 를 다루는 context 전용 API 가 있다.
+
+- context 는 대표적으로 사용자 정보, 테마, 장바구니 등에 활용한다.
+- 라이브러리도 꽤 많다. (RTK - Redux Toolkit, Recoil, Zustands 등)
+- context 는 다루기 위한 좋은 도구로 useReducer 를 활용했었음.
+
+### 4.2. useReducer 란?
+
+- useState 에 비해서 다양하게 state 를 관리할 수 있음.
+- useReducer 에서의 state 와 action, reducer 함수 에 대해서 반드시 이해하자.
+
+### 4.2 예제
+
+- context 를 모아둔 폴더 즉, src/context 폴더 확인
+- TodoContext.jsx
+
+```jsx
+// 1. Todo 를 위한 context 생성
+
+import { createContext } from "react";
+
+// 1.1. Todo 데이터를 위한 context
+export const TodoStateContext = createContext(null);
+// 1.2. Todo 데이터 업데이트를 위한 context
+export const TodoDispatchContext = createContext(null);
+```
+
+- TodoProvider.jsx 생성
+
+```jsx
+// 2. Provider 생성
+
+import { act, useReducer } from "react";
+import { TodoDispatchContext, TodoStateContext } from "./TodoContext";
+
+// 2.1. 초기값 생성
+const initialTodoState = [];
+// 2.2 리듀서 함수 생성
+function todoReducer(state, action) {
+  // action = {type:"add", payload:"안녕하세요".}
+  switch (action.type) {
+    case "add":
+      return [
+        ...state,
+        { id: new Date(), text: action.payload, completed: false },
+      ];
+    case "toggle":
+      // action = {type:"toggle", payload:아이디}
+      return state.map(item =>
+        item.id === action.payload
+          ? { ...item, completed: !item.completed }
+          : item,
+      );
+    // action = {type:"delete", payload:아이디}
+    case "delete":
+      return state.filter(itme => item.id !== action.payload);
+    default:
+      return state;
+  }
+}
+// 2.2 Provider 생성
+export function TodoProvider({ children }) {
+  const [todos, dispatch] = useReducer(todoReducer, initialTodoState);
+  return (
+    <TodoStateContext.Provider value={todos}>
+      <TodoDispatchContext.Provider value={dispatch}>
+        {children}
+      </TodoDispatchContext.Provider>
+    </TodoStateContext.Provider>
+  );
+}
+```
+
+- App.jsx
+
+```jsx
+import { TodoProvider } from "./contexts/TodoProvider";
+
+function App() {
+  return <TodoProvider>App</TodoProvider>;
+}
+
+export default App;
+```
+
+- /src/components/todo 폴더
+- TodoAdd.jsx 추가용 컴포넌트
+- TodoList.jsx 목록용 컴포넌트
+- TodoItem.jsx 하나의 Todo 컴포넌트
