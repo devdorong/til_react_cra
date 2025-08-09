@@ -42,7 +42,7 @@ git remote add origin 주소
 ```bash
 npm install
 npm i
-
+npm install react@18.2.0 react-dom@18.2.0
 ```
 
 - `dependencies` : 항목은 웹에 올라가는 js 라이브러리 소스
