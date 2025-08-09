@@ -207,6 +207,7 @@ export default App;
 
 ```bash
 npm install eslint@7 -D
+npm install eslint@8.56.0 -D // eslint 8.56버전 
 ```
 
 #### 5.1.2. 초기서 ESLint 환경 설정 생성하기
